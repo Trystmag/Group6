@@ -1,5 +1,6 @@
 package blackjack;
 
+import java.awt.*;
 import java.util.Scanner;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -88,15 +89,18 @@ public class Game
 	public static void getInfo(JFrame f)
 	{
 		//Creating and framing all necessary items for the GUI
-		JDialog userInfo = new JDialog(f, "Who are you?", true);
+		JDialog userInfo = new JDialog(f, "Welcome to BlackJack", true);
 		userInfo.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		JPanel panel = new JPanel();
 		panel.setSize(450, 350);
 		panel.setLayout(null);
+		//Player Name
 		JLabel userName = new JLabel("Player name:");
 		userName.setBounds(20, 20, 100, 50);
+		//Purse amount
 		JLabel startingPurse = new JLabel("Starting purse amount (500+):");
-		startingPurse.setBounds(20, 70, 150, 50);
+		startingPurse.setBounds(20, 70, 200, 50);
+		//additional players
 		JLabel computers = new JLabel("Additional Players (0-3): ");
 		computers.setBounds(20, 120, 150, 50);
 		JTextField getName = new JTextField();
@@ -156,11 +160,17 @@ public class Game
 	//Creates the GUI
 	public static void gameGUI()
 	{
+		//Frame for game
 		JFrame game = new JFrame("G6 - Blackjack");
 		getInfo(game);
 		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         game.setSize(1200, 800);
+		game.setLayout(null);
+
+		//panel for player
         JPanel panel = new JPanel();
+		panel.setBackground(Color.red);
+		panel.setBounds(0,314,300,240);
         JLabel userName = new JLabel(name);
         JLabel purse = new JLabel(Integer.toString(chips));
         JLabel computers = new JLabel(Integer.toString(numOfPlayers));
@@ -169,8 +179,33 @@ public class Game
         panel.add(purse);
         panel.add(computers);
         game.add(panel);
-        
-        
+
+		//panel for dealer
+		JPanel dealerPanel = new JPanel();
+		dealerPanel.setBackground(Color.white);
+		dealerPanel.setBounds(0,0,1200,314);
+
+		game.add(dealerPanel);
+
+		//panel for additional player 1
+		JPanel AddPlayerPanel1 = new JPanel();
+		AddPlayerPanel1.setBackground(Color.LIGHT_GRAY);
+		AddPlayerPanel1.setBounds(300,314,300,240);
+		game.add(AddPlayerPanel1);
+
+		//Panel for additional player 2
+		JPanel AddPlayerPanel2 = new JPanel();
+		AddPlayerPanel2.setBackground(Color.blue);
+		AddPlayerPanel2.setBounds(600,314,300,240);
+		game.add(AddPlayerPanel2);
+
+		//Panel for additional player 3
+		JPanel AddPlayerPanel3 = new JPanel();
+		AddPlayerPanel3.setBackground(Color.GREEN);
+		AddPlayerPanel3.setBounds(900,314,300,240);
+		game.add(AddPlayerPanel3);
+
+
         game.setVisible(true);
 	}
 	
